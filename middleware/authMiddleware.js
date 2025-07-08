@@ -14,7 +14,11 @@ module.exports = async (req, resp, next) => {
           message: "Unauthorized user or invalid token",
         });
       } else {
-        req.user = decode.id; 
+        console.log(decode)
+        console.log(req.user)
+        req.user={}
+        req.user.id = decode.id; 
+        req.user.role=decode.role;
         next(); 
       }
     });
