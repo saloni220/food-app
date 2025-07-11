@@ -1,10 +1,17 @@
 const { UserModel, schema } = require("../models/usermodel");
 const sendMail = require("../utils/sendmail");
-
+const {otpShema}=require('../models/otp')
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const joi = require("joi");
 const userRole = require("../middleware/authrestro");
+const { now } = require("mongoose");
+const sendotp=async(req,res)=>{
+  const {email}= req.body
+  const otpCode=Math.floor(1000000+Math.random()*900000).toString();
+  const expireAt=new Date(Date,now()+5*60*1000)//5 min
+  await otp.delete
+}
 const registerController = async (req, res) => {
   try {
     //take data from body

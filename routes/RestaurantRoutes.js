@@ -5,6 +5,7 @@ const {
   createRestuarantController,
   getAllRestaurantsController,
   getSingleRestaurantController,
+  deleteRestaurantController,
 } = require("../controllers/RestaurantController");
 // const authorizeRoles = require("../middleware/authrestro");
 const userRole = require("../middleware/authrestro");
@@ -17,6 +18,8 @@ router.post("/create", authMiddleware,userRole,createRestuarantController);
 router.get('/getall',getAllRestaurantsController)
 //get single restaurant
 router.get('/getone/:_id',getSingleRestaurantController)
+//delete restaurant
+router.delete('/delete/:_id',authMiddleware,userRole,deleteRestaurantController)
 
 module.exports = router;
 

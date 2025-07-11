@@ -18,6 +18,7 @@ app.use('/api/v1/test',require('./routes/testroutes'))
 app.use('/api/v1/auth',require('./routes/authrouts'))
 app.use('/api/v1/user',require('./routes/userroutes'))  
 app.use('/api/v1/restaurant',require('./routes/RestaurantRoutes'))
+app.use('/api/v1/category',require('./routes/categoryRoute'))
 
 app.get('/',async(req,res)=>{
     return res.status(200).send("<h1>welcome here <hr> how are you <br> API BASED PROJECT</h1>")
