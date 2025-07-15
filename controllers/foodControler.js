@@ -74,9 +74,10 @@ const getOneFood= async(req,res)=>{
         if(!foodId){
             return res.status(404).send({
                 success:false,
-                message:'food not found'
+                message:'please provide food id'
             })
         }
+      
         res.status(200).send({
             success:true,
             message:'find food successfully',
@@ -91,4 +92,34 @@ const getOneFood= async(req,res)=>{
      })   
     }
 }
-module.exports = { createFoodController ,getAllfood,getOneFood};
+//get food by restaurent
+const getFoodByRestaurent = async(req,res)=>{
+  try {
+    const restro_id = await foodModel.find({_id:req.params._id})
+    if(!restro_id){
+      return res.status(400).send({
+        success:false,
+        message:"please provide id"
+      })
+    }
+    const food = await foodModel.find({restroId:restro_id})
+    if(!food){
+      return res.status(500).send({
+        success:false,
+        message:"food not found with this id"
+      })
+    }
+    console.log("food == >>> ",food)
+    res.status(200).send({
+      success:false,
+      message:"food find successfully",
+      food
+    })
+  } catch (error) {
+    res.status(500).send({
+      success:false,
+      message:'error in get food by restaurent in API'
+    })
+  }
+}
+module.exports = { createFoodController ,getAllfood,getOneFood,getFoodByRestaurent};

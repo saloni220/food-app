@@ -6,6 +6,7 @@ const {
   createFoodController,
   getAllfood,
   getOneFood,
+  getFoodByRestaurent,
 } = require("../controllers/foodControler");
 
 //create()
@@ -14,5 +15,9 @@ router.post("/createFood", authMiddleware, userRole, createFoodController);
 router.get("/getAllfood", getAllfood);
 //get food by id
 router.get('/getOneFood/:_id',getOneFood)
+//get food by restaurent
+router.get('/getFoodByRestaurent/:_id',getFoodByRestaurent)
+//update food
+
 
 module.exports = router;
